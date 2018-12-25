@@ -17,6 +17,7 @@ $(function(){
     var container_height = parseInt(container.height());
     var tp_initial_position = parseInt(tp.css('right'));
     var tp_initial_height = parseInt(tp.css('height'));
+    var tp_max_height = 100;
     var turd_left = parseInt(turd.css('left'));
     var turd_height = parseInt(turd.height());
     var speed = 10;
@@ -50,7 +51,12 @@ $(function(){
             if (tp_current_position > container_width) {
 
                 // change height of bars after they move outside the container
-                var new_height = parseInt(Math.random() * 100);
+                var new_height = parseInt(Math.random() * tp_max_height);
+
+                if (Math.random() < 0.5) {
+                    new_height *= -1;
+                }
+
                 tp_1.css('height', tp_initial_height + new_height);
                 tp_2.css('height', tp_initial_height - new_height);
 
@@ -76,7 +82,7 @@ $(function(){
 
     // this function continuously moves the turd downwards
     function go_down(){
-        turd.css('top', parseInt(turd.css('top')) + 5);
+        turd.css('top', parseInt(turd.css('top')) + 8);
     }
 
     // this function moves the turd up when called
